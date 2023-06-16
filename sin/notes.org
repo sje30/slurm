@@ -1,0 +1,76 @@
+#+title: notes on slurm
+#+author: Stephen J Eglen
+#+date: 2022-09-15
+
+
+
+sbatch submit_array.sh
+squeue -u sje30
+
+scancel <jobnum>
+
+to ensure jobs get restarted if they fail, run --requeue option 
+* mail options
+
+#SBATCH --mail-type=BEGIN,END
+#SBATCH --mail-user=jane.smith@stonybrook.edu
+
+would allow you to mail on BEGIN and END
+
+* requeue
+
+I think requeue only works for those jobs that have not timed out.
+e.g. rebooting of machine, sysadmin intervention.
+
+* squeue
+
+list of all running jobs
+
+to show just mine
+
+squeue -u sje30
+states
+p - pending
+r - running
+cg - cancelling -- i.e. ending
+
+0:46 - 46 seconds
+
+partition = logical organisation of some of the cluster
+
+scontrol show job <*>
+jobnumber scancel -- cancel a job
+
+
+* sinfo
+
+status of different partitions
+
+idle state 
+
+* srun - launch interactive job, so that you see output
+* sbatch - launch batch scripts for
+
+use .slurm for suffix
+
+
+* Questions
+
+** how to estimate load of the desktop?
+
+
+references https://www.youtube.com/watch?v=49DzPT9HFJM
+
+** where to put the output files.
+
+must create the folder myself
+
+For job arrays, the default file name is "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index
+Otherwise, for regular jobs, it is --output=<filename_pattern>
+
+Instruct Slurm to connect the batch script's standard output directly
+to the file name specified in the "filename pattern". By default both
+standard output and standard error are directed to the same file. For
+job arrays, the default file name is "slurm-%A_%a.out", "%A" is
+replaced by the job ID and "%a" with the array index. For other jobs,
+the default file name is "slurm-%j.out",

@@ -1,0 +1,41 @@
+---
+title: "Running your jobs with Slurm"
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+---
+
+
+## Introduction
+
+Slurm: Simple Linux Utility for Resource Management.
+
+Slurm provides a queuing system for running jobs across a network of
+machines.  This is useful in maths as we have many desktops that have
+spare CPU cycles.
+
+Slurm takes care of finding an empty machine, and runs the jobs for
+you.
+
+## The queue
+
+You can see what is in the queue by running the *squeue* command.
+This will show you jobs that are currently running, and those that are
+waiting to be run.
+
+
+## What is a job?
+
+A job is a shell-script program that you wish to run.  It can contain
+meta-data for the slurm process to specify the needs of the job,
+e.g. max duration, memory required.  Here is a very simple job.
+
+
+
+## When is next downtime?
+
+    scontrol show reservation
+
