@@ -18,8 +18,11 @@ set of 250 simulations.
 ## run the jobs with slurm
 Now these can be submitted as an 'array job' to slurm:
 
-```
+(running as sje30 on maths; change username as needed)
 
+```
+sbatch submit_array.sh
+squeue -u sje30
 ```
 
 ## summarise the results
